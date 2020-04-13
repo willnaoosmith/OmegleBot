@@ -26,7 +26,7 @@ while True:
 		Disconnected2 = content.find('You have disconnected')
 		IsAnswered = content.find('Stranger:')
 
-		if Disconnected != -1 || Disconnected2 != 1:
+		if Disconnected != -1 or Disconnected2 != 1:
 			DisconnectButton = browser.find_element_by_class_name("disconnectbtn").click()
 			time.sleep(2)
 			alreadySent = False
