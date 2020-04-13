@@ -4,10 +4,10 @@ from selenium import webdriver
 import time
 
 textToSend = """
-hey i'm a bot, beep bop
+i'm a bot, beep bop
 """
 
-browser = webdriver.Firefox(executable_path='geckodriver')
+browser = webdriver.Firefox(executable_path='/home/user/desktop/geckodriver')
 
 browser.get('https://www.omegle.com')
 browser.maximize_window()
@@ -23,9 +23,10 @@ while True:
 	try:
 		content = browser.page_source
 		Disconnected = content.find('Stranger has disconnected')
+		Disconnected2 = content.find('You have disconnected')
 		IsAnswered = content.find('Stranger:')
 
-		if Disconnected != -1:
+		if Disconnected != -1 || Disconnected2 != 1:
 			DisconnectButton = browser.find_element_by_class_name("disconnectbtn").click()
 			time.sleep(2)
 			alreadySent = False
@@ -39,6 +40,7 @@ while True:
 				time.sleep(1)
 				SendButton = browser.find_element_by_class_name("sendbtn").click()
 				alreadySent = True
+				print("Conversation Started")
 
 			else:
 						
